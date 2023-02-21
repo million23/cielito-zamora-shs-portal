@@ -45,7 +45,7 @@
 <PageTransition>
   <main>
     <div
-      class=" min-h-[300px] lg:min-h-[500px] bg-center bg-cover gap-2 rounded-btn p-10 flex flex-col justify-end lg:justify-center bg-[url('https://lh3.googleusercontent.com/kkr2TmO3u_FfBakRK1ZO-dpxKpxvX84TsZksqJNtfAjqBpCzdUairFKYnAhUj9Xz8tWkTXwYI9QjykmCmswAlsmLfIIXBFjxYabcsnuPizy5OHVYjMW2=w2400-rj')]"
+      class=" min-h-[300px] text-primary-content lg:min-h-[500px] bg-center bg-cover gap-2 rounded-btn p-10 flex flex-col justify-end lg:justify-center bg-[url('https://lh3.googleusercontent.com/kkr2TmO3u_FfBakRK1ZO-dpxKpxvX84TsZksqJNtfAjqBpCzdUairFKYnAhUj9Xz8tWkTXwYI9QjykmCmswAlsmLfIIXBFjxYabcsnuPizy5OHVYjMW2=w2400-rj')]"
     >
       <h1 class="text-5xl md:text-7xl font-medium">What we offer</h1>
       <p class="max-w-xl">

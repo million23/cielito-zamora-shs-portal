@@ -27,7 +27,7 @@
 
 <PageTransition>
   <div
-    class="min-h-[250px] lg:min-h-[500px] p-10 rounded-btn flex flex-col justify-center bg-center bg-cover bg-[url('https://lh3.googleusercontent.com/m8am03OY7pwMPiYPLQ4K1PimDBzWIv49tLkS5ilqBfI4GadhofpAikaOP7bfmxeLWQHIL1dan7DU8wW0ob5w1s2NKf9CXJqkkehN--SM8ROC-ZzgKA=w2400-rj')]"
+    class="min-h-[250px] lg:min-h-[500px] text-primary-content p-10 rounded-btn flex flex-col justify-center bg-center bg-cover bg-[url('https://lh3.googleusercontent.com/m8am03OY7pwMPiYPLQ4K1PimDBzWIv49tLkS5ilqBfI4GadhofpAikaOP7bfmxeLWQHIL1dan7DU8wW0ob5w1s2NKf9CXJqkkehN--SM8ROC-ZzgKA=w2400-rj')]"
   >
     <p class="ml-1 text-sm opacity-50">Senior High Academic Course</p>
     <h1 class="text-3xl md:text-5xl lg:text-6xl max-w-3xl font-semibold">
