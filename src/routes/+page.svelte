@@ -57,7 +57,7 @@
   <div
     class="min-h-[500px] bg-center bg-cover gap-2 rounded-btn p-5 flex flex-col justify-center items-center text-center bg-[url('https://lh3.googleusercontent.com/1g_8dMsxYAfoZ_VS338syoSlyVpl5yD9Ho5eV7clDTqPGwaKElIciZTvzvxZeaM_-dE3vYWh6oZ4FyuUg3bRo21f6Ue56_ADwSBmh6kasSKS3EA5gQE=w2400-rj')]"
   >
-    <div class="max-w-md">
+    <div class="max-w-md text-primary-content">
       <h1 class="text-4xl font-bold">
         Welcome to <br /> Cielito-Zamora SHS Portal
       </h1>
