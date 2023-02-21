@@ -9,7 +9,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint .",
-		"git": "git add . && git commit"
+		"git": "git add -A && git commit -m",
+		"postgit": "git push --all"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
