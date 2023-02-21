@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Appbar from "../components/Appbar.svelte";
+  import Footer from "../components/Footer.svelte";
   import "../global.css";
 
   let link_academics = [
@@ -27,26 +29,26 @@
       href: "/academics/applied-subjects",
     },
     {
-      name: "Other Resources",
-      href: "/academics/other",
+      name: "E-Library",
+      href: "/academics/e-library",
     },
   ];
   let link_services = [
     {
-      name: "Library",
-      href: "/services/library",
+      name: "Librarika",
+      href: "https://cielitozamorashslibrary.librarika.com/",
     },
     {
       name: "GutenBerg",
-      href: "/services/gutenberg",
+      href: "https://www.gutenberg.org/",
     },
     {
       name: "InfoPlease",
-      href: "/services/infoplease",
+      href: "https://www.infoplease.com/",
     },
     {
       name: "LibrarySpot",
-      href: "/services/libraryspot",
+      href: "http://libraryspot.com/",
     },
   ];
   let link_others = [
@@ -81,76 +83,13 @@
 <div class="drawer select-none">
   <input type="checkbox" name="appshell" id="appshell" class="drawer-toggle" />
   <div class="drawer-content">
-    <div class="mx-auto max-w-4xl px-5 lg:px-0 relative">
+    <div class="mx-auto max-w-5xl pt-24 relative px-5 lg:px-0">
       <!-- navbar -->
-      <div class="navbar px-0 absolute top-0 left-0 w-full z-50">
-        <!-- menu button -->
-        <div class="flex-none lg:hidden">
-          <label for="appshell" class="btn btn-square btn-ghost">
-            <i class="material-symbols-rounded">menu</i>
-          </label>
-        </div>
-        <!-- hero name -->
-        <div class="flex-1">
-          <a href="/" class="btn btn-ghost text-sm gap-2 items-center">
-            <i class="material-symbols-rounded">history_edu</i>
-            <span>Cielito Zamora SHS Portal</span>
-          </a>
-        </div>
-        <!-- desktop links -->
-        <div class="flex-none lg:flex gap-2 hidden">
-          <div class="dropdown dropdown-end dropdown-hover">
-            <buton tabindex="0" class="btn btn-ghost hover:btn-primary">
-              Academics
-            </buton>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-max"
-            >
-              {#each link_academics as link}
-                <li class="text-right w-full">
-                  <a href={link.href}>{link.name}</a>
-                </li>
-              {/each}
-            </ul>
-          </div>
-          <div class="dropdown dropdown-end dropdown-hover">
-            <buton tabindex="0" class="btn btn-ghost hover:btn-primary">
-              Services
-            </buton>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-max"
-            >
-              {#each link_services as link}
-                <li class="text-right w-full">
-                  <a href={link.href}>{link.name}</a>
-                </li>
-              {/each}
-            </ul>
-          </div>
-          <div class="dropdown dropdown-end dropdown-hover">
-            <buton tabindex="0" class="btn btn-ghost hover:btn-primary">
-              Others
-            </buton>
-            <ul
-              tabindex="0"
-              class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-max"
-            >
-              {#each link_others as link}
-                <li class="text-right w-full">
-                  <a href={link.href}>{link.name}</a>
-                </li>
-              {/each}
-            </ul>
-          </div>
-        </div>
-      </div>
-
+      <Appbar {link_academics} {link_services} {link_others} />
       <!-- content -->
-      <main>
-        <slot />
-      </main>
+      <slot />
+      <!-- footer -->
+      <Footer />
     </div>
   </div>
   <div class="drawer-side">
