@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Footer from "../components/Footer.svelte";
   import { onMount } from "svelte";
   import { register } from "swiper/element/bundle";
   import PageTransition from "../components/PageTransition.svelte";
@@ -44,14 +45,6 @@
     },
   ];
 </script>
-
-<!-- {#if y < 100}
-  <img
-    class={`fixed top-0 left-0 w-full h-full object-cover -z-10 opacity-50`}
-    alt="school"
-    src="https://static.wixstatic.com/media/a7a74e_1f9a5f9bdffa42f78c73212f8c4da8bb~mv2.jpg/v1/fill/w_980,h_816,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a7a74e_1f9a5f9bdffa42f78c73212f8c4da8bb~mv2.jpg"
-  />
-{/if} -->
 
 <PageTransition>
   <div
@@ -204,6 +197,8 @@
       </div>
     </div>
   </div>
+
+  <Footer />
 </PageTransition>
 
 <svelte:window bind:scrollY={y} />

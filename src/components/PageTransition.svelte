@@ -11,14 +11,14 @@
   in:fly={{
     y: 10,
     duration: 250,
-    delay: 500,
+    delay: 250,
   }}
   out:fly={{
-    y: 10,
+    opacity: 0,
     duration: 250,
   }}
   class="relative"
 >
-  <div class="fixed top-[-120px] left-0" bind:this={scroller} />
+  <div class="fixed top-[-100px] left-0" bind:this={scroller} />
   <slot />
 </main>
