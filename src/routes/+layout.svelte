@@ -88,8 +88,6 @@
       <Appbar {link_academics} {link_services} {link_others} />
       <!-- content -->
       <slot />
-      <!-- footer -->
-      <Footer />
     </div>
   </div>
   <div class="drawer-side">

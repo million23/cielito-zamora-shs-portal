@@ -38,7 +38,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-max"
+          class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-max"
         >
           {#each link_academics as link}
             <li class="text-right w-full">
@@ -58,7 +58,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-max"
+          class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-max"
         >
           {#each link_services as link}
             <li class="text-right w-full">
@@ -74,7 +74,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul
           tabindex="0"
-          class="dropdown-content menu p-2 shadow bg-base-200 rounded-box w-max"
+          class="dropdown-content menu p-2 shadow-lg bg-base-100 rounded-box w-max"
         >
           {#each link_others as link}
             <li class="text-right w-full">
