@@ -1,6 +1,235 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import {
+	Accordion,
+	Box,
+	Burger,
+	Button,
+	Container,
+	Drawer,
+	Flex,
+	Footer,
+	MantineProvider,
+	MediaQuery,
+	Menu,
+	Navbar,
+	Paper,
+	Text,
+} from "@mantine/core";
+import { useColorScheme, useDisclosure } from "@mantine/hooks";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import { AppProps } from "next/app";
+import { FooterLinks } from "@/components/Footer";
+import Head from "next/head";
+import Link from "next/link";
+import { useState } from "react";
+
+const navbarLinks = [
+	{
+		title: "Academics",
+		href: "/academics",
+		links: [
+			{ title: "Admission", href: "/academics/admission" },
+			{ title: "Announcements", href: "/academics/announcements" },
+			{ title: "HUMSS", href: "/academics/humanities-and-social-sciences" },
+			{
+				title: "STEM",
+				href: "/academics/science-technology-engineering-and-mathematics",
+			},
+			{
+				title: "ICT",
+				href: "/academics/information-and-communications-technology",
+			},
+			{ title: "HE", href: "/academics/home-economics" },
+		],
+	},
+	{
+		title: "Services",
+		links: [
+			{
+				title: "Library",
+				href: "https://cielitozamorashslibrary.librarika.com/",
+			},
+			{ title: "GutenBerg", href: "http://www.gutenberg.org/" },
+			{ title: "InfoPlease", href: "http://infoplease.com/" },
+		],
+	},
+	{
+		title: "Other Links",
+		links: [
+			{ title: "Tests and TOS", href: "/other/tests-and-tos" },
+			{ title: "DLL", href: "/other/dll" },
+			{ title: "Curriculum Guide", href: "/other/curriculum-guide" },
+			{ title: "External Links", href: "/other/external-links" },
+			{ title: "About and Contact", href: "/other/about" },
+		],
+	},
+];
+const footerlinks = [
+	{
+		title: "Academics",
+		links: [
+			{ label: "Admission", link: "/academics/admission" },
+			{ label: "Announcements", link: "/academics/announcements" },
+			{ label: "HUMSS", link: "/academics/humanities-and-social-sciences" },
+			{
+				label: "STEM",
+				link: "/academics/science-technology-engineering-and-mathematics",
+			},
+			{
+				label: "ICT",
+				link: "/academics/information-and-communications-technology",
+			},
+			{ label: "HE", link: "/academics/home-economics" },
+		],
+	},
+	{
+		title: "Services",
+		links: [
+			{
+				label: "Library",
+				link: "https://cielitozamorashslibrary.librarika.com/",
+			},
+			{ label: "GutenBerg", link: "http://www.gutenberg.org/" },
+			{ label: "InfoPlease", link: "http://infoplease.com/" },
+		],
+	},
+	{
+		title: "Other Links",
+		links: [
+			{ label: "Tests and TOS", link: "/other/tests-and-tos" },
+			{ label: "DLL", link: "/other/dll" },
+			{ label: "Curriculum Guide", link: "/other/curriculum-guide" },
+			{ label: "External Links", link: "/other/external-links" },
+			{ label: "About and Contact", link: "/other/about" },
+		],
+	},
+];
+
+export default function App(props: AppProps) {
+	const { Component, pageProps } = props;
+	const [sideMenuOpen, { toggle: setSideMenuOpen, close: closeSideMenu }] =
+		useDisclosure(false);
+
+	return (
+		<>
+			<Head>
+				<title>Page title</title>
+				<meta
+					name="viewport"
+					content="minimum-scale=1, initial-scale=1, width=device-width"
+				/>
+			</Head>
+
+			<MantineProvider
+				withGlobalStyles
+				withNormalizeCSS
+				theme={{
+					colorScheme: "dark",
+					colors: {
+						brand: [
+							"#F0BBDD",
+							"#ED9BCF",
+							"#EC7CC3",
+							"#ED5DB8",
+							"#F13EAF",
+							"#F71FA7",
+							"#FF00A1",
+							"#E00890",
+							"#C50E82",
+							"#AD1374",
+						],
+					},
+					primaryColor: "brand",
+				}}
+			>
+				<Paper style={{ position: "sticky", top: 0, zIndex: 50 }}>
+					{/* drawer */}
+					<Drawer opened={sideMenuOpen} onClose={closeSideMenu} size="sm">
+						<Accordion variant="separated" mt="sm">
+							{navbarLinks.map((link) => (
+								<Accordion.Item value={link.title}>
+									<Accordion.Control>{link.title}</Accordion.Control>
+									<Accordion.Panel>
+										<Flex direction="column" gap="sm">
+											{link.href && (
+												<Link
+													href={link.href}
+													style={{ textDecoration: "none" }}
+												>
+													<Button fullWidth>{link.title} Page</Button>
+												</Link>
+											)}
+											{link.links.map((sub) => (
+												<Link
+													href={sub.href}
+													style={{ textDecoration: "none" }}
+												>
+													<Button fullWidth>{sub.title}</Button>
+												</Link>
+											))}
+										</Flex>
+									</Accordion.Panel>
+								</Accordion.Item>
+							))}
+						</Accordion>
+					</Drawer>
+					{/* navbar */}
+					<Container bg="" style={{ position: "sticky", top: 0, zIndex: 50 }}>
+						<Flex justify="space-between" align="center" py="xl">
+							<Flex align="center" gap="sm">
+								<MediaQuery largerThan="md" styles={{ display: "none" }}>
+									<Burger opened={sideMenuOpen} onClick={setSideMenuOpen} />
+								</MediaQuery>
+								<Link href="/" style={{ textDecoration: "none" }}>
+									<Text>Cielito Zamora SHS</Text>
+								</Link>
+							</Flex>
+							<MediaQuery smallerThan="md" styles={{ display: "none" }}>
+								<Flex gap="sm">
+									{navbarLinks.map((link) => (
+										<Menu
+											shadow="md"
+											width={200}
+											position="bottom-end"
+											withArrow
+											arrowPosition="center"
+											trigger="hover"
+										>
+											<Menu.Target>
+												{link.href ? (
+													<Link
+														href={link.href}
+														style={{ textDecoration: "none" }}
+													>
+														<Button variant="subtle">{link.title} Page</Button>
+													</Link>
+												) : (
+													<Button variant="subtle">{link.title}</Button>
+												)}
+											</Menu.Target>
+											<Menu.Dropdown>
+												{link.links.map((sub) => (
+													<Link
+														href={sub.href}
+														style={{ textDecoration: "none" }}
+													>
+														<Menu.Item>{sub.title}</Menu.Item>
+													</Link>
+												))}
+											</Menu.Dropdown>
+										</Menu>
+									))}
+								</Flex>
+							</MediaQuery>
+						</Flex>
+					</Container>
+				</Paper>
+
+				<Component {...pageProps} />
+				{/* <Container mih="100vh" py="md">
+				</Container> */}
+
+				<FooterLinks data={footerlinks} />
+			</MantineProvider>
+		</>
+	);
 }
