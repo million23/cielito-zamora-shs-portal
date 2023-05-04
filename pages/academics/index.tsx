@@ -1,8 +1,11 @@
 import {
+	Accordion,
+	Anchor,
 	Badge,
 	Button,
 	Card,
 	Container,
+	Flex,
 	Group,
 	Image,
 	Overlay,
@@ -12,6 +15,9 @@ import {
 	createStyles,
 	rem,
 } from "@mantine/core";
+
+import Head from "next/head";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
 	hero: {
@@ -81,6 +87,7 @@ const AcademicItems = [
 			"https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		description:
 			"STEM courses cover science, technology, engineering, and math subjects, offering practical learning experiences and preparing students for careers in related fields.",
+		href: "/academics/science-technology-engineering-and-mathematics",
 	},
 	{
 		title: "Information and Communications Technology",
@@ -88,6 +95,7 @@ const AcademicItems = [
 			"https://images.pexels.com/photos/270360/pexels-photo-270360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		description:
 			"These courses provide students with the skills and knowledge necessary to work with modern technology and information systems. In today's digital age, ICT skills are highly sought after by employers in various industries. ",
+		href: "/academics/information-and-communications-technology",
 	},
 	{
 		title: "Home Economics",
@@ -95,6 +103,7 @@ const AcademicItems = [
 			"https://images.pexels.com/photos/5638676/pexels-photo-5638676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		description:
 			"These courses aim to equip students with the knowledge and skills necessary to maintain a healthy and functional home environment. Home economics courses can also cover topics related to personal finance, child development, and family relationships. ",
+		href: "/academics/home-economics",
 	},
 	{
 		title: "Humanities and Social Sciences",
@@ -102,6 +111,7 @@ const AcademicItems = [
 			"https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		description:
 			"These courses aim to provide students with critical thinking skills and a broad understanding of human behavior and society. Humanities and social sciences courses often involve reading, writing, and analysis, and offer opportunities for students to develop their research and communication skills",
+		href: "/academics/humanities-and-social-sciences",
 	},
 ];
 
@@ -128,32 +138,32 @@ export default function AcademicsPage() {
 			<Container mt={100}>
 				<Title>What we offer</Title>
 
-				<SimpleGrid
-					breakpoints={[
-						{ minWidth: "sm", cols: 1 },
-						{ minWidth: "md", cols: 2 },
-					]}
-				>
+				<Accordion>
 					{AcademicItems.map((item) => (
-						<Card shadow="sm" padding="lg" radius="md" withBorder>
-							<Card.Section>
-								<Image src={item.image} height={250} alt={item.title} />
-							</Card.Section>
+						<Accordion.Item value={item.title}>
+							<Accordion.Control>{item.title}</Accordion.Control>
+							<Accordion.Panel>
+								<SimpleGrid
+									breakpoints={[
+										{ minWidth: "xs", cols: 1 },
+										{ minWidth: "md", cols: 2 },
+									]}
+									spacing={20}
+								>
+									<Image src={item.image} height={200} />
+									<Text>{item.description}</Text>
+								</SimpleGrid>
 
-							<Text mt="lg" weight={500}>
-								{item.title}
-							</Text>
-
-							<Text size="sm" color="dimmed" mt="sm">
-								{item.description}
-							</Text>
-						</Card>
+								<Anchor href={item.href}>
+									<Button mt="xl" fullWidth>
+										Interested? Click here to learn about our admissions
+										process.
+									</Button>
+								</Anchor>
+							</Accordion.Panel>
+						</Accordion.Item>
 					))}
-				</SimpleGrid>
-
-				<Button mt="xl" fullWidth size="xl">
-					Interested? Click here to learn about our admissions process.
-				</Button>
+				</Accordion>
 			</Container>
 		</>
 	);

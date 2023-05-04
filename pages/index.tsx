@@ -89,7 +89,7 @@ export default () => {
 	return (
 		<>
 			<div className={classes.root}>
-				<Container size="lg">
+				<Container size="md">
 					<div className={classes.inner}>
 						<div className={classes.content}>
 							<Title className={classes.title}>

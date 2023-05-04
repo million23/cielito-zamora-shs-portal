@@ -7,6 +7,8 @@ import {
 	rem,
 } from "@mantine/core";
 
+import { useRouter } from "next/router";
+
 const useStyles = createStyles((theme) => ({
 	footer: {
 		marginTop: rem(120),
@@ -118,6 +120,7 @@ interface FooterLinksProps {
 
 export function FooterLinks({ data }: FooterLinksProps) {
 	const { classes } = useStyles();
+	const router = useRouter();
 
 	const groups = data.map((group) => {
 		const links = group.links.map((link, index) => (
@@ -141,7 +144,10 @@ export function FooterLinks({ data }: FooterLinksProps) {
 	});
 
 	return (
-		<footer className={classes.footer}>
+		<footer
+			style={{ display: router.pathname.includes("studio") ? "none" : "block" }}
+			className={classes.footer}
+		>
 			<Container className={classes.inner}>
 				<div className={classes.logo}>
 					<p>Cielito Zamora SHS Portal</p>

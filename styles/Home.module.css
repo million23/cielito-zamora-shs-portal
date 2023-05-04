@@ -276,3 +276,12 @@
     transform: rotate(0deg);
   }
 }
+#app {
+  height: 100vh;
+  max-height: 100dvh;
+  position: fixed;
+  z-index: 99999;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  overflow: auto;
+}

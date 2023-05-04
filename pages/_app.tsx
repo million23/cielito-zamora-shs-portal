@@ -1,5 +1,8 @@
+import "../styles/Home.module.css";
+
 import {
 	Accordion,
+	Anchor,
 	Box,
 	Burger,
 	Button,
@@ -7,6 +10,7 @@ import {
 	Drawer,
 	Flex,
 	Footer,
+	Image,
 	MantineProvider,
 	MediaQuery,
 	Menu,
@@ -20,6 +24,7 @@ import { AppProps } from "next/app";
 import { FooterLinks } from "@/components/Footer";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const navbarLinks = [
@@ -60,6 +65,7 @@ const navbarLinks = [
 			{ title: "Curriculum Guide", href: "/other/curriculum-guide" },
 			{ title: "External Links", href: "/other/external-links" },
 			{ title: "About and Contact", href: "/other/about" },
+			{ title: "Content Studio", href: "/studio" },
 		],
 	},
 ];
@@ -108,11 +114,17 @@ export default function App(props: AppProps) {
 	const { Component, pageProps } = props;
 	const [sideMenuOpen, { toggle: setSideMenuOpen, close: closeSideMenu }] =
 		useDisclosure(false);
+		const router = useRouter();
 
 	return (
 		<>
 			<Head>
-				<title>Page title</title>
+				<title>
+					{router.pathname === "/" ? "Cielito Zamora SHS Portal" : ""}
+					{router.pathname.includes("/academics")
+						? "Academics | Cielito Zamora SHS Portal"
+						: ""}
+				</title>
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -173,15 +185,26 @@ export default function App(props: AppProps) {
 						</Accordion>
 					</Drawer>
 					{/* navbar */}
-					<Container bg="" style={{ position: "sticky", top: 0, zIndex: 50 }}>
+					<Container
+						bg=""
+						style={{
+							position: "sticky",
+							top: 0,
+							zIndex: 999,
+							display: router.pathname.includes("studio") ? "none" : "block",
+						}}
+					>
 						<Flex justify="space-between" align="center" py="xl">
 							<Flex align="center" gap="sm">
 								<MediaQuery largerThan="md" styles={{ display: "none" }}>
 									<Burger opened={sideMenuOpen} onClick={setSideMenuOpen} />
 								</MediaQuery>
-								<Link href="/" style={{ textDecoration: "none" }}>
-									<Text>Cielito Zamora SHS</Text>
-								</Link>
+								<Anchor href="/" color="white">
+									<Flex align="center" gap="sm">
+										<Image width={40} src="/School Logov2.webp" />
+										<Text>Cielito Zamora SHS</Text>
+									</Flex>
+								</Anchor>
 							</Flex>
 							<MediaQuery smallerThan="md" styles={{ display: "none" }}>
 								<Flex gap="sm">
