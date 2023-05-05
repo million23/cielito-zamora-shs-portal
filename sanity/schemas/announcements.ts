@@ -39,7 +39,7 @@ export default {
 			name: "description",
 			title: "Announcement Description",
 			type: "array",
-			of: [{ type: "block" }],
+			of: [{ type: "block" }, { type: "image" }],
 		},
 	],
 };
