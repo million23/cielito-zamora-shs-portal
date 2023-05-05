@@ -60,7 +60,7 @@ const navbarLinks = [
 	{
 		title: "Other Links",
 		links: [
-			{ title: "Tests and TOS", href: "/other/tests-and-tos" },
+			// { title: "Tests and TOS", href: "/other/tests-and-tos" },
 			{ title: "DLL", href: "/other/dll" },
 			{ title: "Curriculum Guide", href: "/other/curriculum-guide" },
 			{ title: "External Links", href: "/other/external-links" },
@@ -167,13 +167,14 @@ export default function App(props: AppProps) {
 												</Link>
 											)}
 											{link.links.map((sub) => (
-												<Link
+												<Anchor
 													href={sub.href}
 													key={sub.title}
 													style={{ textDecoration: "none" }}
+													target={sub.href?.includes("/studio") ? "_blank" : ""}
 												>
 													<Button fullWidth>{sub.title}</Button>
-												</Link>
+												</Anchor>
 											))}
 										</Flex>
 									</Accordion.Panel>
@@ -229,13 +230,16 @@ export default function App(props: AppProps) {
 											</Menu.Target>
 											<Menu.Dropdown>
 												{link.links.map((sub) => (
-													<Link
+													<Anchor
+														target={
+															sub.href?.includes("/studio") ? "_blank" : ""
+														}
 														key={sub.title}
 														href={sub.href}
 														style={{ textDecoration: "none" }}
 													>
 														<Menu.Item>{sub.title}</Menu.Item>
-													</Link>
+													</Anchor>
 												))}
 											</Menu.Dropdown>
 										</Menu>
@@ -247,8 +251,6 @@ export default function App(props: AppProps) {
 				</Paper>
 
 				<Component {...pageProps} />
-				{/* <Container mih="100vh" py="md">
-				</Container> */}
 
 				<FooterLinks data={footerlinks} />
 			</MantineProvider>
