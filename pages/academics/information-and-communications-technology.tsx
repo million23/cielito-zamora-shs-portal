@@ -85,7 +85,7 @@ const ICTPage = () => {
 					]}
 				>
 					{coresubjects.map((subject) => (
-						<Card>
+						<Card key={subject.title}>
 							<Text size="lg" fw="bold">
 								{subject.title}
 							</Text>

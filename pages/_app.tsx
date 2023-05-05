@@ -154,7 +154,7 @@ export default function App(props: AppProps) {
 					<Drawer opened={sideMenuOpen} onClose={closeSideMenu} size="sm">
 						<Accordion variant="separated" mt="sm">
 							{navbarLinks.map((link) => (
-								<Accordion.Item value={link.title}>
+								<Accordion.Item key={link.title} value={link.title}>
 									<Accordion.Control>{link.title}</Accordion.Control>
 									<Accordion.Panel>
 										<Flex direction="column" gap="sm">
@@ -169,6 +169,7 @@ export default function App(props: AppProps) {
 											{link.links.map((sub) => (
 												<Link
 													href={sub.href}
+													key={sub.title}
 													style={{ textDecoration: "none" }}
 												>
 													<Button fullWidth>{sub.title}</Button>
@@ -206,6 +207,7 @@ export default function App(props: AppProps) {
 								<Flex gap="sm">
 									{navbarLinks.map((link) => (
 										<Menu
+											key={link.title}
 											shadow="md"
 											width={200}
 											position="bottom-end"
@@ -228,6 +230,7 @@ export default function App(props: AppProps) {
 											<Menu.Dropdown>
 												{link.links.map((sub) => (
 													<Link
+														key={sub.title}
 														href={sub.href}
 														style={{ textDecoration: "none" }}
 													>

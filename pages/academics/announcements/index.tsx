@@ -74,10 +74,11 @@ const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
 				{!announcements &&
 					Array(3)
 						.fill(0)
-						.map((_, i) => <Skeleton h={120} />)}
+						.map((_, i) => <Skeleton key={`skeleton_${i}`} h={120} />)}
 
 				{announcements?.map((announcement) => (
 					<Link
+						key={announcement._id}
 						href={`/academics/announcements/${announcement.slug}`}
 						style={{ textDecoration: "none" }}
 					>
@@ -89,7 +90,12 @@ const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
 								<Flex align="center" gap="sm">
 									<Text>By</Text>
 									{announcement.authors.map((author) => (
-										<Tooltip label={author.name} position="bottom" withArrow>
+										<Tooltip
+											key={author.name}
+											label={author.name}
+											position="bottom"
+											withArrow
+										>
 											<Avatar
 												radius="xl"
 												src={author.avatar}
