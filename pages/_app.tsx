@@ -125,10 +125,10 @@ export default function App(props: AppProps) {
 	const { Component, pageProps } = props;
 	const [sideMenuOpen, { toggle: setSideMenuOpen, close: closeSideMenu }] =
 		useDisclosure(false);
-		const router = useRouter();
-const [colorTheme, setColorTheme] = useLocalStorage<ColorScheme>({
+	const router = useRouter();
+	const [colorTheme, setColorTheme] = useLocalStorage<ColorScheme>({
 		key: "mantine-color-scheme",
-		defaultValue: "dark",
+		defaultValue: "light",
 		getInitialValueInEffect: true,
 	});
 

@@ -1,6 +1,10 @@
 import {
 	Button,
 	Container,
+	Flex,
+	Image,
+	SimpleGrid,
+	Stack,
 	Text,
 	Title,
 	createStyles,
@@ -125,6 +129,22 @@ export default () => {
 					</div>
 				</Container>
 			</div>
+			<Container mt={100}>
+				<SimpleGrid cols={2} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
+					<Stack>
+						<Title order={2} align="center">
+							Our Mission
+						</Title>
+						<Image src="https://static.wixstatic.com/media/a7a74e_5dafcf48e3424ebb904583df725d09b3~mv2_d_1600_1600_s_2.jpg/v1/crop/x_0,y_67,w_1600,h_1467/fill/w_613,h_562,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/a7a74e_5dafcf48e3424ebb904583df725d09b3~mv2_d_1600_1600_s_2.jpg" />
+					</Stack>
+					<Stack>
+						<Title order={2} align="center">
+							Our Vision and Values
+						</Title>
+						<Image src="https://static.wixstatic.com/media/a7a74e_9de9bb0b56574d56b88a84ab9985ba52~mv2_d_1600_1600_s_2.jpg/v1/fill/w_614,h_662,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a7a74e_9de9bb0b56574d56b88a84ab9985ba52~mv2_d_1600_1600_s_2.jpg" />
+					</Stack>
+				</SimpleGrid>
+			</Container>
 			<Container mt={100}>
 				<LandingCarousel />
 				<GetInTouch />
