@@ -36,6 +36,14 @@ export default {
 			],
 		},
 		{
+			name: "headerImage",
+			title: "Header Image",
+			type: "image",
+			options: {
+				hotspot: true,
+			},
+		},
+		{
 			name: "description",
 			title: "Announcement Description",
 			type: "array",
