@@ -24,11 +24,56 @@ type Announcement = {
 	_id: string;
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	const { slug } = context.query;
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+// 	const { slug } = context.query;
 
+// 	const query = groq`
+// 		*[_type == "announcements" && slug.current == "${slug}"] {
+// 			"authors": authors[] -> {
+// 				name,
+// 				"avatar": avatar.asset->url
+// 			},
+// 			title,
+// 			"slug": slug.current,
+// 			description,
+// 			_createdAt,
+// 			_id
+// 		}
+// 	`;
+
+// 	const data = await client.fetch(query);
+// 	const announcement = await data[0];
+
+// 	return {
+// 		props: {
+// 			announcement,
+// 		},
+// 	};
+// };
+
+export const getStaticPaths: GetStaticPaths = async () => {
 	const query = groq`
-		*[_type == "announcements" && slug.current == "${slug}"] {
+		*[_type == "announcements"] {
+			"slug": slug.current
+		}
+	`;
+
+	const data = await client.fetch(query);
+	const announcements = await data;
+
+	const paths = announcements.map((announcement: Announcement) => ({
+		params: { slug: announcement.slug },
+	}));
+
+	return {
+		paths,
+		fallback: false,
+	};
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+	const query = groq`
+		*[_type == "announcements" && slug.current == "${context.params?.slug}"] {
 			"authors": authors[] -> {
 				name,
 				"avatar": avatar.asset->url
@@ -54,8 +99,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const AnnouncementPage: NextPage<{ announcement: Announcement }> = ({
 	announcement,
 }) => {
-	console.log(announcement);
-
 	return (
 		<Container py={50}>
 			<Anchor href="/academics/announcements">

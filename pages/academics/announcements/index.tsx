@@ -52,34 +52,31 @@ type Announcement = {
 	_id: string;
 };
 
-const AnnouncementPage = () => {
-	const [announcements, setAnnounements] = useState<Announcement[]>([]);
-	const [loading, setLoading] = useState(true);
+export const getStaticProps: GetStaticProps = async () => {
+	const data = await client.fetch(announcementQuery);
+	const announcements = await data;
 
-	const fetchAnnouncements = async () => {
-		const data = await client.fetch(announcementQuery);
-		const announcements = await data;
-
-		setAnnounements(announcements);
-		setLoading(false);
-		console.log(announcements);
+	return {
+		props: {
+			announcements,
+		},
 	};
+};
 
-	useEffect(() => {
-		fetchAnnouncements();
-	}, []);
-
+const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
+	announcements,
+}) => {
 	return (
 		<Container>
 			<h1>Announcements</h1>
 
 			<Flex direction="column" gap="sm">
-				{loading &&
+				{!announcements &&
 					Array(3)
 						.fill(0)
 						.map((_, i) => <Skeleton h={120} />)}
 
-				{announcements.map((announcement) => (
+				{announcements?.map((announcement) => (
 					<Link
 						href={`/academics/announcements/${announcement.slug}`}
 						style={{ textDecoration: "none" }}

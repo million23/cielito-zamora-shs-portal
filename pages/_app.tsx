@@ -119,16 +119,12 @@ export default function App(props: AppProps) {
 	return (
 		<>
 			<Head>
-				<title>
-					{router.pathname === "/" ? "Cielito Zamora SHS Portal" : ""}
-					{router.pathname.includes("/academics")
-						? "Academics | Cielito Zamora SHS Portal"
-						: ""}
-				</title>
+				<title>Cielito Zamora SHS Portal</title>
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width"
 				/>
+				<link href="/School Logov2.webp" rel="icon" />
 			</Head>
 
 			<MantineProvider
