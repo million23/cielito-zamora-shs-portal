@@ -1,4 +1,13 @@
-import { Anchor, Button, Container, Title } from "@mantine/core";
+import {
+	Anchor,
+	Avatar,
+	Button,
+	Container,
+	Flex,
+	Text,
+	Title,
+	Tooltip,
+} from "@mantine/core";
 import {
 	GetServerSideProps,
 	GetStaticPaths,
@@ -10,6 +19,7 @@ import { MdArrowBack, MdArrowLeft } from "react-icons/md";
 import { PortableText } from "@portabletext/react";
 import { TypedObject } from "sanity";
 import { client } from "@/sanity/lib/client";
+import dayjs from "dayjs";
 import { groq } from "next-sanity";
 
 type Announcement = {
@@ -106,7 +116,19 @@ const AnnouncementPage: NextPage<{ announcement: Announcement }> = ({
 					Go back
 				</Button>
 			</Anchor>
-			<Title order={1}>{announcement.title}</Title>
+			<Title order={1} mb={10}>
+				{announcement.title}
+			</Title>
+			<Flex justify="space-between" mb={50}>
+				<Flex>
+					{announcement.authors.map((author) => (
+						<Tooltip label={author.name} position="bottom-start" withArrow>
+							<Avatar src={author.avatar} placeholder={author.name} />
+						</Tooltip>
+					))}
+				</Flex>
+				<Text>{dayjs(announcement._createdAt).format("MMMM D, YYYY")}</Text>
+			</Flex>
 
 			<PortableText value={announcement.description} />
 		</Container>

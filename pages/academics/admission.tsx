@@ -17,7 +17,7 @@ const AdmissionPage = () => {
 	const [activeStep, setActiveStep] = useState(0);
 
 	return (
-		<Container>
+		<Container mt={75}>
 			<Title>Admission Process</Title>
 
 			<Text>

@@ -1,6 +1,7 @@
 import {
 	Anchor,
 	Avatar,
+	Box,
 	Card,
 	Center,
 	Container,
@@ -36,6 +37,7 @@ const announcementQuery = groq`
 		},
 		title,
 		"slug": slug.current,
+		"headerImage": headerImage.asset->url,
 		description,
 		_createdAt,
 		_id
@@ -50,6 +52,7 @@ type Announcement = {
 	title: string;
 	slug: string;
 	description: string;
+	headerImage?: string;
 	_createdAt: string;
 	_id: string;
 };
@@ -69,10 +72,10 @@ const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
 	announcements,
 }) => {
 	return (
-		<Container>
-			<h1>Announcements</h1>
+		<Container mt={75}>
+			<Title mb="lg">All Posts</Title>
 
-			<Grid grow>
+			<Grid gutter="md">
 				{!announcements &&
 					Array(5)
 						.fill(0)
@@ -92,19 +95,25 @@ const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
 						))}
 
 				{announcements?.map((announcement) => (
-					<Grid.Col sm={12} md={6}>
+					<Grid.Col sm={12} md={announcement.headerImage ? 6 : 12}>
 						<Anchor
 							key={announcement._id}
 							href={`/academics/announcements/${announcement.slug}`}
 							style={{ textDecoration: "none" }}
 						>
-							<Card>
-								<Text size="xl" fw="bold">
-									{announcement.title}
-								</Text>
+							<Card shadow="sm">
+								{announcement.headerImage && (
+									<Card.Section mb={10}>
+										<Image src={announcement.headerImage} height={150} />
+									</Card.Section>
+								)}
+								<Box mah={150} maw="100%">
+									<Text size="xl" fw="bold" truncate>
+										{announcement.title}
+									</Text>
+								</Box>
 								<Group mt="xl" position="apart">
 									<Flex align="center" gap="sm">
-										<Text>By</Text>
 										{announcement.authors.map((author) => (
 											<Tooltip
 												key={author.name}
