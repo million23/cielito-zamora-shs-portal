@@ -80,7 +80,7 @@ const AdmissionPage = () => {
 							<Flex direction="column" gap="md">
 								<Text>
 									If you already secured your papers, you can now proceed to the
-									registrar's office for assessment.
+									registrar&apos;s office for assessment.
 								</Text>
 							</Flex>
 						</SimpleGrid>

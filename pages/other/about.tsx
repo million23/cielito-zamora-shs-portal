@@ -45,7 +45,7 @@ const AboutPage = () => {
 			<Title mt={75}>About</Title>
 			<Flex direction="column" gap={"xl"}>
 				<Text size="xl" mt={25} mb={10}>
-					Welcome to Cielito Zamora Senior High School's website!
+					Welcome to Cielito Zamora Senior High School&apos;s website!
 				</Text>
 				<Text mb={10}>
 					Cielito Zamora Senior High School is a premier educational institution
@@ -91,8 +91,8 @@ const AboutPage = () => {
 					height={200}
 				/>
 				<Text mb={10}>
-					We take pride in our school's culture of excellence, integrity, and
-					service. Our students are encouraged to strive for excellence in
+					We take pride in our school&apos;s culture of excellence, integrity,
+					and service. Our students are encouraged to strive for excellence in
 					everything they do, to act with integrity and respect towards others,
 					and to be of service to their community. We believe that these values
 					are essential for our students to become responsible and compassionate
@@ -108,8 +108,8 @@ const AboutPage = () => {
 				<Text mb={10}>
 					Thank you for considering Cielito Zamora Senior High School for your
 					education. If you have any questions or would like to know more about
-					our school, please don't hesitate to contact us. We would be happy to
-					hear from you
+					our school, please don&apos;t hesitate to contact us. We would be
+					happy to hear from you
 				</Text>
 			</Flex>
 		</Container>

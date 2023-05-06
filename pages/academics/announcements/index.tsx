@@ -80,7 +80,7 @@ const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
 					Array(5)
 						.fill(0)
 						.map((_, i) => (
-							<Grid.Col sm={12} md={6}>
+							<Grid.Col sm={12} md={6} key={`loadingcard_${i}`}>
 								<Card>
 									<Flex direction="column" gap="sm">
 										<Skeleton height={15} />
@@ -94,8 +94,12 @@ const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
 							</Grid.Col>
 						))}
 
-				{announcements?.map((announcement) => (
-					<Grid.Col sm={12} md={announcement.headerImage ? 6 : 12}>
+				{announcements?.map((announcement, index) => (
+					<Grid.Col
+						key={`authorcard_${index}`}
+						sm={12}
+						md={announcement.headerImage ? 6 : 12}
+					>
 						<Anchor
 							key={announcement._id}
 							href={`/academics/announcements/${announcement.slug}`}

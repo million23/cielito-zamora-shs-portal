@@ -139,8 +139,8 @@ export default function AcademicsPage() {
 				<Title>What we offer</Title>
 
 				<Accordion>
-					{AcademicItems.map((item) => (
-						<Accordion.Item value={item.title}>
+					{AcademicItems.map((item, index) => (
+						<Accordion.Item key={`accordion_item_${index}`} value={item.title}>
 							<Accordion.Control>{item.title}</Accordion.Control>
 							<Accordion.Panel>
 								<SimpleGrid

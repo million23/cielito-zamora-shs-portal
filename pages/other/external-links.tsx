@@ -84,6 +84,7 @@ const ExternalLinksPage = () => {
 			>
 				{externalLinks.map((link) => (
 					<Anchor
+						key={link.title}
 						href={link.href}
 						target="_blank"
 						style={{ textDecoration: "none" }}

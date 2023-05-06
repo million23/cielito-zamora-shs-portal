@@ -88,7 +88,7 @@ const useStyles = createStyles((theme) => ({
 	},
 }));
 
-export default () => {
+const HomePage = () => {
 	const { classes } = useStyles();
 	return (
 		<>
@@ -152,3 +152,5 @@ export default () => {
 		</>
 	);
 };
+
+export default HomePage;

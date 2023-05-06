@@ -8,14 +8,9 @@ import {
 	Title,
 	Tooltip,
 } from "@mantine/core";
-import {
-	GetServerSideProps,
-	GetStaticPaths,
-	GetStaticProps,
-	NextPage,
-} from "next";
-import { MdArrowBack, MdArrowLeft } from "react-icons/md";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
+import { MdArrowBack } from "react-icons/md";
 import { PortableText } from "@portabletext/react";
 import { TypedObject } from "sanity";
 import { client } from "@/sanity/lib/client";
@@ -33,33 +28,6 @@ type Announcement = {
 	_createdAt: string;
 	_id: string;
 };
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-// 	const { slug } = context.query;
-
-// 	const query = groq`
-// 		*[_type == "announcements" && slug.current == "${slug}"] {
-// 			"authors": authors[] -> {
-// 				name,
-// 				"avatar": avatar.asset->url
-// 			},
-// 			title,
-// 			"slug": slug.current,
-// 			description,
-// 			_createdAt,
-// 			_id
-// 		}
-// 	`;
-
-// 	const data = await client.fetch(query);
-// 	const announcement = await data[0];
-
-// 	return {
-// 		props: {
-// 			announcement,
-// 		},
-// 	};
-// };
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const query = groq`
@@ -121,8 +89,13 @@ const AnnouncementPage: NextPage<{ announcement: Announcement }> = ({
 			</Title>
 			<Flex justify="space-between" mb={50}>
 				<Flex>
-					{announcement.authors.map((author) => (
-						<Tooltip label={author.name} position="bottom-start" withArrow>
+					{announcement.authors.map((author, index) => (
+						<Tooltip
+							key={`author_${index}`}
+							label={author.name}
+							position="bottom-start"
+							withArrow
+						>
 							<Avatar src={author.avatar} placeholder={author.name} />
 						</Tooltip>
 					))}
