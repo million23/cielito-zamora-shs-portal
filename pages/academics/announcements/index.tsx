@@ -95,22 +95,22 @@ const AnnouncementPage: NextPage<{ announcements: Announcement[] }> = ({
 						))}
 
 				{announcements?.map((announcement, index) => (
-					<Grid.Col
-						key={`authorcard_${index}`}
-						sm={12}
-						md={announcement.headerImage ? 6 : 12}
-					>
+					<Grid.Col key={`authorcard_${index}`} sm={12} md={6}>
 						<Anchor
 							key={announcement._id}
 							href={`/academics/announcements/${announcement.slug}`}
 							style={{ textDecoration: "none" }}
 						>
 							<Card shadow="sm">
-								{announcement.headerImage && (
-									<Card.Section mb={10}>
-										<Image src={announcement.headerImage} height={150} />
-									</Card.Section>
-								)}
+								<Card.Section mb={10}>
+									<Image
+										src={
+											announcement.headerImage ||
+											"https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+										}
+										height={150}
+									/>
+								</Card.Section>
 								<Box mah={150} maw="100%">
 									<Text size="xl" fw="bold" truncate>
 										{announcement.title}
