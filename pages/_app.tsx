@@ -183,7 +183,11 @@ export default function App(props: AppProps) {
 														key={sub.title}
 														style={{ textDecoration: "none" }}
 														target={
-															sub.href?.includes("/studio") ? "_blank" : ""
+															sub.href?.includes("/studio")
+																? "_blank"
+																: "" || link.title === "Services"
+																? "_blank"
+																: ""
 														}
 													>
 														<Button fullWidth>{sub.title}</Button>
@@ -247,7 +251,11 @@ export default function App(props: AppProps) {
 													{link.links.map((sub) => (
 														<Anchor
 															target={
-																sub.href?.includes("/studio") ? "_blank" : ""
+																sub.href?.includes("/studio")
+																	? "_blank"
+																	: "" || link.title === "Services"
+																	? "_blank"
+																	: ""
 															}
 															key={sub.title}
 															href={sub.href}
